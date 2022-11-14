@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addContactsThunk } from 'redux/contacts/contactsOperations';
 import { addContact } from 'redux/contacts/contactsSlice';
 import { contactsSelector } from 'redux/selectors';
 import { Button, Form, Input, Label } from './ContactForm.styled';
@@ -20,12 +21,11 @@ export const ContactForm = () => {
       return alert(`${name} is already in contact`);
     }
     const newContact = {
-      id: nanoid(),
       name,
       number,
     };
 
-    dispatch(addContact(newContact));
+    dispatch(addContactsThunk(newContact));
 
     e.target.reset();
   };

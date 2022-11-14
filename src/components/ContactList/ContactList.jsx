@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ContactsTitle, List } from './ContactList.styled';
 import { ContactElement } from 'components/ContactElement';
@@ -6,6 +6,12 @@ import { useSelector } from 'react-redux';
 import { filteredContactsSelector } from 'redux/selectors';
 
 export function ContactList() {
+  const [elId, setElId] = useState('');
+
+  const idChanger = id => {
+    setElId(id);
+  };
+
   const contacts = useSelector(filteredContactsSelector);
   return (
     <>
@@ -13,6 +19,8 @@ export function ContactList() {
       <List>
         {contacts.map(item => (
           <ContactElement
+            elId={elId}
+            idChanger={idChanger}
             id={item.id}
             key={item.id}
             name={item.name}
