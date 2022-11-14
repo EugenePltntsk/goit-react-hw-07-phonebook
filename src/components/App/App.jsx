@@ -15,7 +15,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getAllContactsThunk());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Wrapper>

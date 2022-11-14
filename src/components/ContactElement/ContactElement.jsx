@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Item } from './ContactElement.styled';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dna } from 'react-loader-spinner';
 
 import { deleteContactsThunk } from 'redux/contacts/contactsOperations';
+import { isLoadingSelector } from 'redux/selectors';
 
 export function ContactElement({ name, number, id, elId, idChanger }) {
-  const isLoading = useSelector(state => state.contacts.isLoading);
+
+  const isLoading = useSelector(isLoadingSelector);
 
   const dispatch = useDispatch();
 
